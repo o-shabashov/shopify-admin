@@ -1,0 +1,33 @@
+services:
+    shopify-admin-localhost:
+        build:
+            context: ./vendor/laravel/sail/runtimes/8.3
+            dockerfile: Dockerfile
+            args:
+                WWWGROUP: '${WWWGROUP}'
+        image: sail-8.3/app
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        ports:
+            - '${VITE_PORT:-5173}:${VITE_PORT:-5173}'
+        environment:
+            WWWUSER: '${WWWUSER}'
+            LARAVEL_SAIL: 1
+            XDEBUG_MODE: '${SAIL_XDEBUG_MODE:-off}'
+            XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
+            IGNITION_LOCAL_SITES_PATH: '${PWD}'
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+            - fleet
+        labels:
+            - traefik.http.routers.shopify-admin-localhost.rule=Host(`shopify-admin.localhost`)
+            - traefik.http.services.shopify-admin-localhost.loadbalancer.server.port=80
+
+networks:
+    sail:
+        driver: bridge
+        external: true
+    fleet:
+        external: true
