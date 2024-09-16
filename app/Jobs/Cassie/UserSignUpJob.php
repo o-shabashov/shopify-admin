@@ -14,6 +14,7 @@ class UserSignUpJob implements ShouldQueue
 
     public function __construct(public User $shopifyAdminUser)
     {
+        $this->onQueue(config('queue.cassie.cassie_high'));
     }
 
     public function handle(): void
