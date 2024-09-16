@@ -408,10 +408,10 @@ return [
         //     'address' => env('SHOPIFY_WEBHOOK_3_ADDRESS', 'https://some-app.com/webhook/orders-create'),
         //     'class'   => \App\Shopify\Actions\ExampleAppJob::class,
         // ],
-        // [
-        //     'topic'   => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_TOPIC', 'APP_UNINSTALLED'),
-        //     'address' => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_ADDRESS', 'https://(your-domain).com/webhook/app-uninstalled'),
-        // ],
+        [
+            'topic'   => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_TOPIC', 'APP_UNINSTALLED'),
+            'address' => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_ADDRESS', 'https://(your-domain).com/webhook/app-uninstalled'),
+        ],
     ],
 
     /*
