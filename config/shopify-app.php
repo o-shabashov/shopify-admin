@@ -55,14 +55,14 @@ return [
     |
     */
 
-    'route_names' => [
-        'home' => env('SHOPIFY_ROUTE_NAME_HOME', 'home'),
-        'authenticate' => env('SHOPIFY_ROUTE_NAME_AUTHENTICATE', 'authenticate'),
-        'authenticate.token' => env('SHOPIFY_ROUTE_NAME_AUTHENTICATE_TOKEN', 'authenticate.token'),
-        'billing' => env('SHOPIFY_ROUTE_NAME_BILLING', 'billing'),
-        'billing.process' => env('SHOPIFY_ROUTE_NAME_BILLING_PROCESS', 'billing.process'),
+    'route_names'        => [
+        'home'                 => env('SHOPIFY_ROUTE_NAME_HOME', 'home'),
+        'authenticate'         => env('SHOPIFY_ROUTE_NAME_AUTHENTICATE', 'authenticate'),
+        'authenticate.token'   => env('SHOPIFY_ROUTE_NAME_AUTHENTICATE_TOKEN', 'authenticate.token'),
+        'billing'              => env('SHOPIFY_ROUTE_NAME_BILLING', 'billing'),
+        'billing.process'      => env('SHOPIFY_ROUTE_NAME_BILLING_PROCESS', 'billing.process'),
         'billing.usage_charge' => env('SHOPIFY_ROUTE_NAME_BILLING_USAGE_CHARGE', 'billing.usage_charge'),
-        'webhook' => env('SHOPIFY_ROUTE_NAME_WEBHOOK', 'webhook'),
+        'webhook'              => env('SHOPIFY_ROUTE_NAME_WEBHOOK', 'webhook'),
     ],
 
     /*
@@ -73,7 +73,7 @@ return [
     | This option allows you to override auth guard used by package middlewares
     |
     */
-    'shop_auth_guard' => env('SHOPIFY_SHOP_AUTH_GUARD', null),
+    'shop_auth_guard'    => env('SHOPIFY_SHOP_AUTH_GUARD', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -328,7 +328,7 @@ return [
     |
     */
 
-    'billing_redirect' => env('SHOPIFY_BILLING_REDIRECT', '/billing/process'),
+    'billing_redirect'    => env('SHOPIFY_BILLING_REDIRECT', '/billing/process'),
 
 
     /*
@@ -349,19 +349,19 @@ return [
     */
 
     'listen' => [
-        \Osiset\ShopifyApp\Messaging\Events\AppInstalledEvent::class => [
+        \Osiset\ShopifyApp\Messaging\Events\AppInstalledEvent::class      => [
             // \App\Listeners\MyListener::class,
         ],
         \Osiset\ShopifyApp\Messaging\Events\ShopAuthenticatedEvent::class => [
             // \App\Listeners\MyListener::class,
         ],
-        \Osiset\ShopifyApp\Messaging\Events\ShopDeletedEvent::class => [
+        \Osiset\ShopifyApp\Messaging\Events\ShopDeletedEvent::class       => [
             // \App\Listeners\MyListener::class,
         ],
-        \Osiset\ShopifyApp\Messaging\Events\AppUninstalledEvent::class => [
+        \Osiset\ShopifyApp\Messaging\Events\AppUninstalledEvent::class    => [
             // \App\Listeners\MyListener::class,
         ],
-        \Osiset\ShopifyApp\Messaging\Events\PlanActivatedEvent::class => [
+        \Osiset\ShopifyApp\Messaging\Events\PlanActivatedEvent::class     => [
             // \App\Listeners\MyListener::class,
         ],
     ],
@@ -381,22 +381,26 @@ return [
     */
 
     'webhooks' => [
-        /*
-            [
-                'topic' => env('SHOPIFY_WEBHOOK_1_TOPIC', 'ORDERS_CREATE'),
-                'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://some-app.com/webhook/orders-create')
-            ], [
-                'topic' => env('SHOPIFY_WEBHOOK_2_TOPIC', 'APP_PURCHASES_ONE_TIME_UPDATE'),
-                'address' => env('SHOPIFY_WEBHOOK_2_ADDRESS', 'https://some-app.com/webhook/purchase'),
-            ]
-            // In certain situations you may wish to map the webhook to a specific class
-            // To do this, change the array to an associative array with a 'class' key
-            'orders-create' => [
-                'topic' => env('SHOPIFY_WEBHOOK_3_TOPIC', 'ORDERS_PAID'),
-                'address' => env('SHOPIFY_WEBHOOK_3_ADDRESS', 'https://some-app.com/webhook/orders-create'),
-                'class' => \App\Shopify\Actions\ExampleAppJob::class
-            ],
-        */],
+        // [
+        //     'topic'   => env('SHOPIFY_WEBHOOK_1_TOPIC', 'ORDERS_CREATE'),
+        //     'address' => env('SHOPIFY_WEBHOOK_1_ADDRESS', 'https://some-app.com/webhook/orders-create'),
+        // ],
+        // [
+        //     'topic'   => env('SHOPIFY_WEBHOOK_2_TOPIC', 'APP_PURCHASES_ONE_TIME_UPDATE'),
+        //     'address' => env('SHOPIFY_WEBHOOK_2_ADDRESS', 'https://some-app.com/webhook/purchase'),
+        // ],
+        // // In certain situations you may wish to map the webhook to a specific class
+        // // To do this, change the array to an associative array with a 'class' key
+        // 'orders-create' => [
+        //     'topic'   => env('SHOPIFY_WEBHOOK_3_TOPIC', 'ORDERS_PAID'),
+        //     'address' => env('SHOPIFY_WEBHOOK_3_ADDRESS', 'https://some-app.com/webhook/orders-create'),
+        //     'class'   => \App\Shopify\Actions\ExampleAppJob::class,
+        // ],
+        [
+            'topic'   => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_TOPIC', 'APP_UNINSTALLED'),
+            'address' => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_ADDRESS', 'https://(your-domain).com/webhook/app-uninstalled'),
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -407,7 +411,7 @@ return [
     |
     */
 
-    'scripttags' => [
+    'scripttags'             => [
         /*
             [
                 'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', 'https://some-app.com/some-controller/js-method-response'),
@@ -415,7 +419,8 @@ return [
                 'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
             ],
             ...
-        */],
+        */
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -439,7 +444,8 @@ return [
                 'job' => env('AFTER_AUTHENTICATE_JOB'), // example: \App\Jobs\AfterAuthorizeJob::class
                 'inline' => env('AFTER_AUTHENTICATE_JOB_INLINE', false) // False = dispatch job for later, true = dispatch immediately
             ],
-        */],
+        */
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -452,8 +458,8 @@ return [
     */
 
     'job_queues' => [
-        'webhooks' => env('WEBHOOKS_JOB_QUEUE', null),
-        'scripttags' => env('SCRIPTTAGS_JOB_QUEUE', null),
+        'webhooks'           => env('WEBHOOKS_JOB_QUEUE', null),
+        'scripttags'         => env('SCRIPTTAGS_JOB_QUEUE', null),
         'after_authenticate' => env('AFTER_AUTHENTICATE_JOB_QUEUE', null),
     ],
 
@@ -505,7 +511,7 @@ return [
         /*
         * The fully qualified class name of the Plan model.
         */
-        'plan' => Osiset\ShopifyApp\Storage\Models\Plan::class,
+        'plan'   => Osiset\ShopifyApp\Storage\Models\Plan::class,
     ],
 
     'table_names' => [
@@ -517,12 +523,12 @@ return [
         /*
         * The table name for Plan model.
         */
-        'plans' => 'plans',
+        'plans'   => 'plans',
 
         /*
          * The table name for the Shop.
          */
-        'shops' => 'users',
+        'shops'   => 'users',
     ],
 
     /*
@@ -539,15 +545,15 @@ return [
         /*
          * Specify the name of the template the app will integrate with
          */
-        'templates' => ['product', 'collection', 'index'],
+        'templates'           => ['product', 'collection', 'index'],
         /*
          * Interval for caching the request: minutes, seconds, hours, days, etc.
          */
-        'cache_interval' => 'hours',
+        'cache_interval'      => 'hours',
         /*
          * Cache duration
          */
-        'cache_duration' => 12,
+        'cache_duration'      => 12,
         /*
          * At which levels of theme support the use of "theme app extension" is not available
          * and script tags will be installed.
@@ -579,7 +585,7 @@ return [
     | No changes are made for Vue.js and Blade.
     |
     */
-    'frontend_engine' => env('SHOPIFY_FRONTEND_ENGINE', 'BLADE'),
+    'frontend_engine'                => env('SHOPIFY_FRONTEND_ENGINE', 'BLADE'),
 
     'iframe_ancestors' => '',
 ];
