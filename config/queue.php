@@ -14,6 +14,10 @@ return [
     */
 
     'default' => env('QUEUE_CONNECTION', 'database'),
+    'cassie' => [
+      'cassie_high' => env('QUEUE_CASSIE_HIGH', 'cassie_high'),
+      'cassie_low' => env('QUEUE_CASSIE_LOW', 'cassie_low'),
+    ],
 
     /*
     |--------------------------------------------------------------------------
