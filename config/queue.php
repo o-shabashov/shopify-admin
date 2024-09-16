@@ -14,10 +14,6 @@ return [
     */
 
     'default' => env('QUEUE_CONNECTION', 'database'),
-    'cassie' => [
-      'cassie_high' => env('QUEUE_CASSIE_HIGH', 'cassie_high'),
-      'cassie_low' => env('QUEUE_CASSIE_LOW', 'cassie_low'),
-    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -111,6 +107,22 @@ return [
         'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
         'database' => env('DB_CONNECTION', 'sqlite'),
         'table' => 'failed_jobs',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Available Queues
+    |--------------------------------------------------------------------------
+    |
+    | All queues names that available across the services.
+    |
+    | Example usage: ->onQueue(config('queue.cassie.cassie_high'))
+    |
+    */
+
+    'cassie' => [
+        'cassie_high' => env('QUEUE_CASSIE_HIGH', 'cassie_high'),
+        'cassie_low' => env('QUEUE_CASSIE_LOW', 'cassie_low'),
     ],
 
 ];
