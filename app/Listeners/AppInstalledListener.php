@@ -20,6 +20,6 @@ class AppInstalledListener implements ShouldQueue
 
     public function handle(AppInstalledEvent $event): void
     {
-        Log::info($this->shopId->toNative());
+        Log::info($event->shopId->toNative());
     }
 }
