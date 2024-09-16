@@ -346,24 +346,36 @@ return [
     | Register listeners to the events
     |--------------------------------------------------------------------------
     |
+    | In Laravel version 11 and later, event listeners located in the `App\Listeners`
+    | directory are automatically registered by default. Therefore, manual registration
+    | in this configuration file is unnecessary.
+    |
+    | If you register the listeners manually again here, the listener will be called twice.
+    |
+    | If you plan to store your listeners in a different directory like `App\Shopify\Listeners`
+    | or within multiple directories, then you should register them here.
+    |
+    | If you are using Laravel version 10 or earlier, then corresponding listeners
+    | must be registered here.
+    |
     */
 
     'listen' => [
-        \Osiset\ShopifyApp\Messaging\Events\AppInstalledEvent::class      => [
-            // \App\Listeners\MyListener::class,
-        ],
-        \Osiset\ShopifyApp\Messaging\Events\ShopAuthenticatedEvent::class => [
-            // \App\Listeners\MyListener::class,
-        ],
-        \Osiset\ShopifyApp\Messaging\Events\ShopDeletedEvent::class       => [
-            // \App\Listeners\MyListener::class,
-        ],
-        \Osiset\ShopifyApp\Messaging\Events\AppUninstalledEvent::class    => [
-            // \App\Listeners\MyListener::class,
-        ],
-        \Osiset\ShopifyApp\Messaging\Events\PlanActivatedEvent::class     => [
-            // \App\Listeners\MyListener::class,
-        ],
+        // \Osiset\ShopifyApp\Messaging\Events\AppInstalledEvent::class      => [
+        //     // \App\Listeners\MyListener::class,
+        // ],
+        // \Osiset\ShopifyApp\Messaging\Events\ShopAuthenticatedEvent::class => [
+        //     // \App\Listeners\MyListener::class,
+        // ],
+        // \Osiset\ShopifyApp\Messaging\Events\ShopDeletedEvent::class       => [
+        //     // \App\Listeners\MyListener::class,
+        // ],
+        // \Osiset\ShopifyApp\Messaging\Events\AppUninstalledEvent::class    => [
+        //     // \App\Listeners\MyListener::class,
+        // ],
+        // \Osiset\ShopifyApp\Messaging\Events\PlanActivatedEvent::class     => [
+        //     // \App\Listeners\MyListener::class,
+        // ],
     ],
 
     /*
@@ -396,10 +408,10 @@ return [
         //     'address' => env('SHOPIFY_WEBHOOK_3_ADDRESS', 'https://some-app.com/webhook/orders-create'),
         //     'class'   => \App\Shopify\Actions\ExampleAppJob::class,
         // ],
-        [
-            'topic'   => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_TOPIC', 'APP_UNINSTALLED'),
-            'address' => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_ADDRESS', 'https://(your-domain).com/webhook/app-uninstalled'),
-        ],
+        // [
+        //     'topic'   => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_TOPIC', 'APP_UNINSTALLED'),
+        //     'address' => env('SHOPIFY_WEBHOOK_APP_UNINSTALLED_ADDRESS', 'https://(your-domain).com/webhook/app-uninstalled'),
+        // ],
     ],
 
     /*
