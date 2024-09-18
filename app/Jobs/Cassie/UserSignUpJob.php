@@ -12,7 +12,7 @@ class UserSignUpJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
-    public function __construct(public User $shopifyAdminUser)
+    public function __construct(public User $shopifyUser)
     {
         $this->onQueue(config('queue.cassie.cassie_high'));
     }

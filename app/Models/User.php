@@ -10,8 +10,7 @@ use Osiset\ShopifyApp\Traits\ShopModel;
 
 class User extends Authenticatable implements IShopModel
 {
-    use HasFactory, Notifiable;
-    use ShopModel;
+    use HasFactory, Notifiable, ShopModel;
 
     /**
      * The attributes that are mass assignable.
