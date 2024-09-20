@@ -2,9 +2,11 @@
 
 namespace App\Listeners;
 
+use App\DTOs\ShopifyUserDto;
+use App\Jobs\Cassie\UserSignUpJob;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Log;
 use Osiset\ShopifyApp\Messaging\Events\AppInstalledEvent;
 use Osiset\ShopifyApp\Objects\Values\ShopId;
 
@@ -20,6 +22,9 @@ class AppInstalledListener implements ShouldQueue
 
     public function handle(AppInstalledEvent $event): void
     {
-        Log::info($event->shopId->toNative());
+        $user           = User::find($event->shopId->toNative());
+        $shopifyUserDto = ShopifyUserDto::fromModel($user);
+
+        UserSignUpJob::dispatch($shopifyUserDto);
     }
 }

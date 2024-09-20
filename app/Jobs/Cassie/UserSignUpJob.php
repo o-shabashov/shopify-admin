@@ -2,22 +2,6 @@
 
 namespace App\Jobs\Cassie;
 
-use App\Models\User;
-use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-
-class UserSignUpJob implements ShouldQueue
+class UserSignUpJob extends BaseCassieHighQueueJob
 {
-    use Dispatchable, InteractsWithQueue, Queueable;
-
-    public function __construct(public User $shopifyUser)
-    {
-        $this->onQueue(config('queue.cassie.cassie_high'));
-    }
-
-    public function handle(): void
-    {
-    }
 }

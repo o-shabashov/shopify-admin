@@ -1,11 +1,15 @@
 {
-    "name": "laravel/laravel",
+    "name": "cassie/shopify-admin",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
-    "keywords": ["laravel", "framework"],
-    "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/o-shabashov/common"
+        }
+    ],
     "require": {
         "php": "^8.2",
+        "cassie/common": "dev-main",
         "kyon147/laravel-shopify": "^21.1",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9"
@@ -62,6 +66,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
+        },
+        "github-oauth": {
+            "github.com": "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"
         }
     },
     "minimum-stability": "stable",
