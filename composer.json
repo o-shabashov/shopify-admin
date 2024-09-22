@@ -12,7 +12,8 @@
         "cassie/common": "dev-main",
         "kyon147/laravel-shopify": "^21.1",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "orchid/platform": "^14.35"
     },
     "require-dev": {
         "aschmelyun/fleet": "^1.1",
