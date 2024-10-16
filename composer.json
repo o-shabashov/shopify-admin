@@ -16,7 +16,6 @@
         "orchid/platform": "^14.35"
     },
     "require-dev": {
-        "aschmelyun/fleet": "^1.1",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
