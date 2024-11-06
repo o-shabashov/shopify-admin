@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Cassie\CassieUser;
 use App\Orchid\Presenters\UserPresenter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Orchid\Access\UserAccess;
@@ -18,6 +20,8 @@ use Osiset\ShopifyApp\Traits\ShopModel;
 
 /**
  * @property int $shopify_id
+ * @method static CassieUser cassieUser()
+ * @property CassieUser $cassieUser
  */
 class User extends Authenticatable implements IShopModel
 {
@@ -107,5 +111,10 @@ class User extends Authenticatable implements IShopModel
             'email_verified_at' => 'datetime',
             'permissions'       => 'array',
         ];
+    }
+
+    public function cassieUser(): HasOne
+    {
+        return $this->hasOne(CassieUser::class, 'id', 'cassie_id');
     }
 }

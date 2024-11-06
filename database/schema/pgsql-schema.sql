@@ -435,7 +435,7 @@ CREATE TABLE public.users (
     theme_support_level integer,
     cassie_id bigint,
     cassie_access_token character varying(255),
-    shopify_id bigint
+    shop_id bigint
 );
 
 
