@@ -16,6 +16,9 @@ use Orchid\Screen\AsSource;
 use Osiset\ShopifyApp\Contracts\ShopModel as IShopModel;
 use Osiset\ShopifyApp\Traits\ShopModel;
 
+/**
+ * @property int $shopify_id
+ */
 class User extends Authenticatable implements IShopModel
 {
     use HasFactory, Notifiable;
@@ -35,6 +38,7 @@ class User extends Authenticatable implements IShopModel
         'name',
         'email',
         'password',
+        'shopify_id',
     ];
 
     /**
