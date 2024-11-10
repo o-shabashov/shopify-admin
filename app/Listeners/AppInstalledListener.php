@@ -6,7 +6,6 @@ use App\DTOs\ShopifyUserDto;
 use App\GraphQL\ShopifyShop;
 use App\Jobs\Cassie\UserSignUpJob;
 use App\Models\User;
-use Auth;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Str;
@@ -22,9 +21,9 @@ class AppInstalledListener implements ShouldQueue
     public function handle(AppInstalledEvent $event): void
     {
         $user             = User::find($event->shopId->toNative());
-        $user->shopify_id = (int) Str::remove(
+        $user->shop_id = (int) Str::remove(
             'gid://shopify/Shop/',
-            data_get(ShopifyShop::getId(Auth::user()->api()), 'body.container.data.shop.id')
+            data_get(ShopifyShop::getId($user->api()), 'body.container.data.shop.id')
         );
         $user->save();
 

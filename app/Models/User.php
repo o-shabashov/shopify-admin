@@ -19,7 +19,7 @@ use Osiset\ShopifyApp\Contracts\ShopModel as IShopModel;
 use Osiset\ShopifyApp\Traits\ShopModel;
 
 /**
- * @property int $shopify_id
+ * @property int $shop_id
  * @method static CassieUser cassieUser()
  * @property CassieUser $cassieUser
  */
@@ -42,7 +42,7 @@ class User extends Authenticatable implements IShopModel
         'name',
         'email',
         'password',
-        'shopify_id',
+        'shop_id',
     ];
 
     /**
