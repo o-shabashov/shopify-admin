@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\DTOs\ShopifyUserDto;
+use App\GraphQL\ShopifyPage;
 use App\GraphQL\ShopifyShop;
 use App\Jobs\Cassie\UserSignUpJob;
 use App\Models\User;
@@ -20,7 +21,7 @@ class AppInstalledListener implements ShouldQueue
 
     public function handle(AppInstalledEvent $event): void
     {
-        $user             = User::find($event->shopId->toNative());
+        $user          = User::find($event->shopId->toNative());
         $user->shop_id = (int) Str::remove(
             'gid://shopify/Shop/',
             data_get(ShopifyShop::getId($user->api()), 'body.container.data.shop.id')
@@ -30,5 +31,7 @@ class AppInstalledListener implements ShouldQueue
         $shopifyUserDto = ShopifyUserDto::fromModel($user);
 
         UserSignUpJob::dispatch($shopifyUserDto);
+
+        ShopifyPage::createSearchResults($user->api());
     }
 }
