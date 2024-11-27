@@ -1,32 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css">
+<script async src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.44.0"></script>
+<script async
+        src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#000000">
-
-    <link rel="manifest" href="./manifest.webmanifest">
-    <link rel="shortcut icon" href="./favicon.png">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7/themes/algolia-min.css">
-    <link rel="stylesheet" href="index.css">
-
-    <title>Typesense InstantSearch.js Demo</title>
-</head>
-
-<body>
-<header class="header">
-    <h1 class="header-title">
-        <a href="/">Instant Search Demo</a>
-    </h1>
-    <p class="header-subtitle">
-        using
-        <a href="https://github.com/algolia/instantsearch.js">
-            Typesense + InstantSearch.js
-        </a>
-    </p>
-</header>
+<title>Typesense InstantSearch.js Demo</title>
 
 <div class="container">
     <div class="search-panel">
@@ -39,18 +16,21 @@
     <div id="pagination"></div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.44.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/typesense-instantsearch-adapter@2/dist/typesense-instantsearch-adapter.min.js"></script>
-
 <script>
-    const typesenseInstantsearchAdapter = new TypesenseInstantSearchAdapter({
+    const indexName = '{{ $indexName }}';
+    const host = '{{ $host }}';
+    const hostPort = '{{ $hostPort }}';
+    const hostProtocol = '{{ $hostProtocol }}';
+    const apiKey = '{{ $apiKey }}';
+
+    const typesenseInstantSearchAdapter = new TypesenseInstantSearchAdapter({
         server: {
-            apiKey: 'xyz', // Be sure to use an API key that only allows searches, in production
+            apiKey: apiKey,
             nodes: [
                 {
-                    host: 'localhost',
-                    port: '8108',
-                    protocol: 'http',
+                    host: host,
+                    port: hostPort,
+                    protocol: hostProtocol,
                 },
             ],
         },
@@ -62,12 +42,9 @@
             queryBy: 'title,authors',
         },
     });
-    const searchClient = typesenseInstantsearchAdapter.searchClient;
+    const searchClient = typesenseInstantSearchAdapter.searchClient;
 
-    const search = instantsearch({
-        searchClient,
-        indexName: 'books',
-    });
+    const search = instantsearch({searchClient, indexName: indexName,});
 
     search.addWidgets([
         instantsearch.widgets.searchBox({
@@ -103,5 +80,3 @@
 
     search.start();
 </script>
-</body>
-</html>

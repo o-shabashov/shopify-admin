@@ -32,6 +32,6 @@ class AppInstalledListener implements ShouldQueue
 
         UserSignUpJob::dispatch($shopifyUserDto);
 
-        ShopifyPage::createSearchResults($user->api());
+        ShopifyPage::createSearchResults($user);
     }
 }
