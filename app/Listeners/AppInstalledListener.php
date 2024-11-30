@@ -28,9 +28,7 @@ class AppInstalledListener implements ShouldQueue
         );
         $user->save();
 
-        $shopifyUserDto = ShopifyUserDto::fromModel($user);
-
-        UserSignUpJob::dispatch($shopifyUserDto);
+        UserSignUpJob::dispatch(ShopifyUserDto::fromModel($user));
 
         ShopifyPage::createSearchResults($user);
     }
