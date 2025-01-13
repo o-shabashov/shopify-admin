@@ -13,9 +13,8 @@ Route::controller(UserController::class)->group(function () {
     Route::get('/user/{shopId}/{shopDomain}/settings', 'showSettings');
 });
 
-if (App::environment('local')) {
-    Route::prefix('test')->group(function () {
-        Route::view('/meili-search', 'meili-search-results', CassieUser::find(1)->settings->meilisearch);
-        Route::view('/type-search', 'type-search-results', CassieUser::find(1)->settings->typesense);
-    });
-}
+// TODO remove
+Route::prefix('test')->group(function () {
+    Route::view('/meili-search', 'meili-search-results', CassieUser::find(1)->settings->meilisearch);
+    Route::view('/type-search', 'type-search-results', CassieUser::find(1)->settings->typesense);
+});
